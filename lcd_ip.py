@@ -11,14 +11,12 @@ def get_ip():
     cmd = "hostname -I | cut -d\' \' -f1"
     return check_output(cmd, shell=True).decode("utf-8").strip()
 
-ip_address = get_ip()
-
 while True:
 
     lcd_line_1 = datetime.now().strftime('%b %d  %H:%M:%S')
-    lcd_line_2 = "IP " + ip_address
+    lcd_line_2 = "IP " + get_ip()
 
     lcd.home()
     lcd.write_string(f'{lcd_line_1}\r\n{lcd_line_2}')
 
-    sleep(2)
+    sleep(10)
